@@ -1,0 +1,7 @@
+version: "3"
+services:
+  mdsdb:
+    image: mdsdb:1.0
+    container_name: mdsdb
+    ports:
+    - "3306:3306"
