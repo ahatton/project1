@@ -1,0 +1,1 @@
+SELECT customer_id, SUM(price) total_price FROM mds.orders GROUP BY customer_id HAVING total_price > 700;
