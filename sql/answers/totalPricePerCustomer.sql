@@ -1,1 +1,1 @@
-SELECT customer_id, SUM(price) total_price FROM mds.orders GROUP BY customer_id;
+SELECT customer_id, SUM(price) total_price FROM orders GROUP BY customer_id;
