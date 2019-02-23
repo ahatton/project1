@@ -63,4 +63,123 @@ class NumberConversionToolTest
                 "XYZ,ABC,37,38,ABC,XYZ,41,ABC,43,44,###,46,47,ABC,49,XYZ,ABC,52,53,ABC,XYZ,56,ABC,58,59,###,61,62,ABC,64,XYZ," +
                 "ABC,67,68,ABC,XYZ,71,ABC,73,74,###,76,77,ABC,79,XYZ,ABC,82,83,ABC,XYZ,86,ABC,88,89,###.", actual);
     }
+
+    @Test
+    public void test_doConversion_startAndEndRangeSame()
+    {
+        numbersConfigurationBean.setStartRange(5);
+        numbersConfigurationBean.setEndRange(5);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("ABC.", actual);
+    }
+
+    @Test
+    public void test_doConversion_startAndEndRangeSame0()
+    {
+        numbersConfigurationBean.setStartRange(0);
+        numbersConfigurationBean.setEndRange(0);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("###.", actual);
+    }
+
+    @Test
+    public void test_doConversion_startRangeGreaterThanEndRange()
+    {
+        numbersConfigurationBean.setStartRange(1);
+        numbersConfigurationBean.setEndRange(0);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals(".", actual);
+    }
+
+    @Test
+    public void test_doConversion_firstMultipleIsZero()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setFirstMultiple(0);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("ABC,-4,-3,-2,-1,ABC,1,2,3,4,ABC.", actual);
+    }
+
+    @Test
+    public void test_doConversion_secondMultipleIsZero()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setSecondMultiple(0);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("-5,-4,XYZ,-2,-1,XYZ,1,2,XYZ,4,5.", actual);
+    }
+
+    @Test
+    public void test_doConversion_bothMultiplesAreZero()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setFirstMultiple(0);
+        numbersConfigurationBean.setSecondMultiple(0);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("-5,-4,-3,-2,-1,0,1,2,3,4,5.", actual);
+    }
+
+    @Test
+    public void test_doConversion_bothMultiplesAreOne()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setFirstMultiple(1);
+        numbersConfigurationBean.setSecondMultiple(1);
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("###,###,###,###,###,###,###,###,###,###,###.", actual);
+    }
+
+    @Test
+    public void test_doConversion_firstReplacementBlankString()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setFirstReplacement("");
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("ABC,-4,,-2,-1,###,1,2,,4,ABC.", actual);
+    }
+
+    @Test
+    public void test_doConversion_secondReplacementBlankString()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setSecondReplacement("");
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals(",-4,XYZ,-2,-1,###,1,2,XYZ,4,.", actual);
+    }
+
+    @Test
+    public void test_doConversion_dualReplacementBlankString()
+    {
+        numbersConfigurationBean.setStartRange(-5);
+        numbersConfigurationBean.setEndRange(5);
+        numbersConfigurationBean.setDualReplacement("");
+
+        String actual = numberConversionTool.doConversion(numbersConfigurationBean);
+
+        assertEquals("ABC,-4,XYZ,-2,-1,,1,2,XYZ,4,ABC.", actual);
+    }
 }

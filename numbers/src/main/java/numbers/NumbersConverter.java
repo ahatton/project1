@@ -7,12 +7,12 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Properties;
 
-public class NumbersConvertor
+public class NumbersConverter
 {
     public static void main(String[] args)
     {
-        Path propetiesFilePath = getPropertiesFilePath(args);
-        Properties properties = FileLoader.loadPropertiesFile(propetiesFilePath.toAbsolutePath());
+        Path propertiesFilePath = getPropertiesFilePath(args);
+        Properties properties = FileLoader.loadPropertiesFile(propertiesFilePath.toAbsolutePath());
         NumbersConfigurationBean numbersConfigurationBean = NumbersConfigurationFactory.createNumbersConfiguration(properties);
         String conversion = new NumberConversionTool().doConversion(numbersConfigurationBean);
         System.out.println(conversion);
