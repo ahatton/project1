@@ -7,8 +7,17 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.Properties;
 
+/**
+ * Utility class for loading a file
+ */
 public class FileLoader
 {
+
+    /**
+     * Takes a path and loads a file at the path into a Properties object.
+     * @param propertiesFilePath the path to the file to load.
+     * @return the loaded Properties object.
+     */
     public static Properties loadPropertiesFile(Path propertiesFilePath)
     {
         Properties properties = new Properties();

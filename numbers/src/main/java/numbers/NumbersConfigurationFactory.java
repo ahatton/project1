@@ -4,16 +4,19 @@ import utilities.PropertyManager;
 
 import java.util.Properties;
 
+/**
+ * Factory for creating a NumbersConfigurationBean object from a Properties object.
+ */
 public class NumbersConfigurationFactory
 {
-    public static final String START_RANGE = "startRange";
-    public static final String END_RANGE = "endRange";
-    public static final String SWITCH_FLAG = "switchFlag";
-    public static final String FIRST_MULTIPLE = "firstMultiple";
-    public static final String SECOND_MULTIPLE = "secondMultiple";
-    public static final String FIRST_REPLACEMENT = "firstReplacement";
-    public static final String SECOND_REPLACEMENT = "secondReplacement";
-    public static final String DUAL_REPLACEMENT = "dualReplacement";
+    protected static final String START_RANGE = "startRange";
+    protected static final String END_RANGE = "endRange";
+    protected static final String SWITCH_FLAG = "switchFlag";
+    protected static final String FIRST_MULTIPLE = "firstMultiple";
+    protected static final String SECOND_MULTIPLE = "secondMultiple";
+    protected static final String FIRST_REPLACEMENT = "firstReplacement";
+    protected static final String SECOND_REPLACEMENT = "secondReplacement";
+    protected static final String DUAL_REPLACEMENT = "dualReplacement";
 
     private NumbersConfigurationFactory()
     {

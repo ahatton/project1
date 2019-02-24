@@ -7,6 +7,11 @@ import java.io.File;
 import java.nio.file.Path;
 import java.util.Properties;
 
+/**
+ * Main class for the NumberConversion program.
+ * If you provide a single arg that will be used as the file path for the configuration file.
+ * If you don't provide any args then you will be presented with a File Chooser dialog.
+ */
 public class NumbersConverter
 {
     public static void main(String[] args)
@@ -16,7 +21,6 @@ public class NumbersConverter
         NumbersConfigurationBean numbersConfigurationBean = NumbersConfigurationFactory.createNumbersConfiguration(properties);
         String conversion = new NumberConversionTool().doConversion(numbersConfigurationBean);
         System.out.println(conversion);
-        System.exit(0);
     }
 
     private static Path getPropertiesFilePath(String[] args)
@@ -27,6 +31,7 @@ public class NumbersConverter
             FileDialog dialog = new FileDialog((Frame) null, "Select configuration file", FileDialog.LOAD);
             dialog.setVisible(true);
             fileSelected = dialog.getDirectory() + dialog.getFile();
+            dialog.dispose();
         } else
         {
             fileSelected = args[0];

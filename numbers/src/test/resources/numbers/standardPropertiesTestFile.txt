@@ -1,0 +1,8 @@
+startRange=-75
+endRange=90
+switchFlag=
+firstMultiple=3
+secondMultiple=5
+firstReplacement=XYZ
+secondReplacement=ABC
+dualReplacement=###
